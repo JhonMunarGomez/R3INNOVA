@@ -1,0 +1,200 @@
+<form novalidate [formGroup]="form">
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-lg-5">
+
+      <p class="title text-center" style="margin-top:30px;">Dispositivos Pendientes por Asignación de Peso</p>
+      <div class="w3-container" style="overflow-y: auto;height: 200px;margin-top: 10px;">
+
+
+        <table class="w3-table w3-bordered w3-striped w3-border test w3-hoverable" style="background-color:white;">
+          <thead>
+            <tr class="w3-green">
+              <th>Codigo Dispositivo</th>
+              <th>Peso</th>
+
+            </tr>
+          </thead>
+          <tr *ngFor="let i of detalle" (click)="ModificarDetalle(i)">
+            <td>{{i.codigo_dispositivo}}{{i.codigo_detalle}}</td>
+            <td>{{i.peso}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-lg-7">
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <label for="eventos" class="titulo">Eventos :</label>
+            <select style="width: 100%;height: 30px;" formControlName="codigo_evento">
+                   <option *ngFor="let i of eventos;"  value="{{i.codigo_evento}}">{{i.nombre_evento}}</option>
+                   
+                  </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="offset-lg-1 col-lg-10">
+            <div class="tabla" *ngIf="mostrartabla()">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="t_texto">Nombre</th>
+                    <th class="t_texto">Peso Kg</th>
+                    <th class="t_texto">Codigo </th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let i of entrega;let in=index;">
+                    <td *ngIf="i" class="texto">{{i.nombre_dispositivo}}</td>
+                    <td *ngIf="i" class="texto">{{i.peso}}</td>
+                    <td *ngIf="i" class="texto">{{i.codigo_dispositivo}}{{i.codigo}}</td>
+                    <td *ngIf="i"><button *ngIf="i" class="btn boton" (click)="Modificar(in)">Modificar</button> </td>
+                    <td><button *ngIf="i" class="btn btn-danger" (click)="Eliminar(i)">Eliminar </button></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-lg-3">
+                    <button class="btn btn-primary" (click)="RegistrarEntrega(form.value.codigo_evento)" [disabled]="!registrar&&!form.valid">Registrar Entrega</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tabla" *ngIf="!mostrartabla()">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="t_texto">Nombre</th>
+                    <th class="t_texto">Peso Kg</th>
+                    <th class="t_text">Codigo </th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+              </table>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-lg-3">
+                    <button class="btn btn-primary" disabled>Registrar Entrega</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w3-container" style="overflow-y: auto;height: 200px;margin-top: 40px;">
+
+
+        <table class="w3-table w3-bordered w3-striped w3-border test w3-hoverable" style="background-color:white;">
+          <thead>
+            <tr class="w3-green">
+              <th>Codigo Dispositivo</th>
+              <th>Nombre</th>
+
+            </tr>
+          </thead>
+          <tr *ngFor="let i of lista;let in=index;" (click)="ingresarpeso(in)">
+            <td>{{i.codigo_dispositivo}}</td>
+            <td>{{i.nombre_dispositivo}}</td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</form>
+
+
+<app-dialog [(visible)]="showDialog">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="texto" for="peso">Peso :</label>
+          <input type="number" [(ngModel)]="peso" class="form-control text-center" placeholder="Peso">
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="texto">Descripción</label>
+          <textarea [(ngModel)]="descripcion" class="form-control"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="texto">Marca: </label>
+          <select style="width: 100%;height: 50px;" [(ngModel)]="marca">
+                   <option *ngFor="let i of listam" value="{{i.codigo_marca}}">{{i.marca}}</option></select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="texto">Tipo</label>
+          <select style="width: 100%;height: 50px;" [(ngModel)]="cod_tipo">
+                   <option *ngFor="let i of listatipo" value="{{i.codigo_tipo}}">{{i.nombre}}</option></select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="offset-lg-2 col-lg-3">
+        <button (click)="ConfirmarPeso(peso,descripcion,marca,cod_tipo)" class="btn btn-primary">Aceptar</button>
+      </div>
+      <div class="offset-lg-1 col-lg-3">
+        <button (click)="Cancelar()" class="btn btn-danger">Cancelar</button>
+      </div>
+
+    </div>
+  </div>
+
+</app-dialog>
+<app-dialog [(visible)]="edicion">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="texto" for="peso">Peso :</label>
+          <input type="number" [(ngModel)]="peso1" class="form-control text-center" placeholder="Peso">
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="texto">Descripción</label>
+          <textarea [(ngModel)]="descripcion1" class="form-control"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="offset-lg-2 col-lg-3">
+        <button (click)="ConfirmaEdicion(peso1,descripcion1)" class="btn btn-primary">Aceptar</button>
+      </div>
+      <div class="offset-lg-1 col-lg-3">
+        <button (click)="CancelarEdicion()" class="btn btn-danger">Cancelar</button>
+      </div>
+
+    </div>
+  </div>
+
+</app-dialog>

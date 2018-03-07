@@ -1,0 +1,29 @@
+.img{
+    height: 200px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.contenedor{
+    margin-top:40px;
+    border-radius: 24px 24px 24px 24px;
+-moz-border-radius: 24px 24px 24px 24px;
+-webkit-border-radius: 24px 24px 24px 24px;
+
+margin: 10px;
+background-color: rgba(30, 149, 31, 0.7);
+  
+ 
+}
+.titulo{
+    font-size: 1.5em;
+    font-weight: bold;
+    color:white;
+}
+.contenido{
+   
+    padding: 0;
+    margin-top:30px;
+   overflow-y:scroll;
+   height: 600px;
+}

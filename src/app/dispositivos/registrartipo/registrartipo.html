@@ -1,0 +1,43 @@
+<form novalidate [formGroup]="form">
+  <div class="container-fluid contenedor">
+    <div class="row">
+      <div class="offset-lg-3 col-lg-5 subcontenedor">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            Tipos Dispositivo
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <label for="dispositivo">Dispositivo :</label>
+            <select style="width: 100%;height: 50px;" formControlName="codigo_dispositivo">
+                   <option *ngFor="let i of lista" value="{{i.codigo_dispositivo}}">{{i.nombre_dispositivo}}</option> 
+                  </select>
+          </div>
+        </div>
+         <div class="row">
+
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label for="nombre_dispositivo">Nombre del Tipo</label>
+            <input type="text" class="form-control text-center" id="nombre_dispositivo" formControlName="nombre_tipo" placeholder="Nombre Tipo">
+
+            <div *ngIf="form.controls.nombre_tipo.errors && form.controls.nombre_tipo.touched">
+              <div *ngIf="form.controls.nombre_tipo.errors.required" class="alert alert-danger">
+                El campo es requerido
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="offset-lg-5 col-lg-4" style="margin-bottom: 5px;">
+          <button class="btn btn-primary" [disabled]="!form.valid" (click)="RegistrarTipo()">Registrar</button>
+        </div>
+      </div>
+      </div>
+     
+
+    </div>
+  </div>
+</form>

@@ -1,0 +1,23 @@
+.titulo{
+    font-size: 2em;
+    font-weight: bold;
+    color:white;
+}
+.contenido{
+background-color: rgba(30, 149, 31, 0.7);
+    margin-top: 50px;
+    border-radius: 10px 10px 10px 10px;
+-moz-border-radius: 10px 10px 10px 10px;
+-webkit-border-radius: 10px 10px 10px 10px;
+border: 1px solid #000000;
+margin-bottom: 30px;
+}
+.container{
+    padding: 0;
+}
+
+.texto{
+    font-weight: bold;
+    color:white;
+    font-size: 1.2em;
+}

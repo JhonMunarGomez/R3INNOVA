@@ -1,0 +1,73 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="offset-lg-2 col-lg-8">
+      <div class="row">
+        <div class="offset-lg-4 col-lg-4" style="margin-top:30px;">
+          <div class="form-group">
+            <label class="texto" for="codigo" style="color:white; font-weight: bold;">Codigo Dispositivo:</label>
+            <input type="text" class="form-control text-center" id="codigo" [(ngModel)]="codigo" placeholder="Codigo Dispositivo">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="offset-lg-2 col-lg-8">
+
+      <p class="title text-center" style="margin-top:30px;">Dispositivos Pendientes por Asignación de Peso</p>
+      <div class="w3-container" style="overflow-y: auto;height: 200px;margin-top: 10px;">
+
+
+        <table class="w3-table w3-bordered w3-striped w3-border test w3-hoverable" style="background-color:white;">
+          <thead>
+            <tr class="w3-green">
+              <th>Codigo Dispositivo</th>
+              <th>Peso</th>
+
+            </tr>
+          </thead>
+          <tr *ngFor="let i of detalle" (click)="ModificarDetalle(i)">
+
+            <td *ngIf="(i.codigo_dispositivo+''+i.codigo_detalle).indexOf(codigo)==0">{{i.codigo_dispositivo}}{{i.codigo_detalle}}</td>
+            <td *ngIf="(i.codigo_dispositivo+''+i.codigo_detalle).indexOf(codigo)==0">{{i.peso}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<app-dialog [(visible)]="edicion">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="texto" for="peso">Peso :</label>
+          <input type="number" [(ngModel)]="peso1" class="form-control text-center" placeholder="Peso">
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="texto">Descripción</label>
+          <textarea [(ngModel)]="descripcion1" class="form-control"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="offset-lg-2 col-lg-3">
+        <button (click)="ConfirmaEdicion(peso1,descripcion1)" class="btn btn-primary">Aceptar</button>
+      </div>
+      <div class="offset-lg-1 col-lg-3">
+        <button (click)="CancelarEdicion()" class="btn btn-danger">Cancelar</button>
+      </div>
+
+    </div>
+  </div>
+
+</app-dialog>

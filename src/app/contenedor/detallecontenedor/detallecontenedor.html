@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="row" *ngIf="lista">
+         <div class="col-lg-12">
+             <div class="w3-container" style="overflow-y: auto;height: 300px;margin-top: 10px;">
+               <table class="w3-table w3-bordered w3-striped w3-border test w3-hoverable" style="background-color:white;">
+          <thead>
+            <tr class="w3-green">
+              <th>Codigo Dispositivo</th>
+              <th>Nombre</th>
+              <th>Cantidad Dispositivos</th>
+              
+
+            </tr>
+          </thead>
+          <tr *ngFor="let i of lista">
+
+            <td> {{i.codigo_dispositivo+i.referencia_dispositivo}}</td>
+            <td>{{i.nombre_dispositivo}}</td>
+            <td>{{i.cantidad_dispositivos}}</td>
+          </tr>
+        </table>
+         </div>
+         </div>
+    </div>
+   
+    <div class="row" *ngIf="!lista">
+      <div class="col-lg-12 text-center">
+         No hay elementos en este contenedor
+      </div>
+    </div>
+     <div class="row">
+      <div class="offset-lg-3 col-lg-7">
+           <button class="btn btn-primary" (click)="VaciarContenedor()">Vaciar Contenedor</button>
+      </div>
+    </div>
+</div>

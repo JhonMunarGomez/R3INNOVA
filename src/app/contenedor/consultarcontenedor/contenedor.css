@@ -1,0 +1,31 @@
+.contenedor{
+   background-color: rgba(30, 149, 31, 0.7);;
+    width: 100%;
+    height:auto;
+    
+    border-radius: 28px 28px 28px 28px;
+-moz-border-radius: 28px 28px 28px 28px;
+-webkit-border-radius: 28px 28px 28px 28px;
+border: 0px solid #000000;
+}
+.sinpadding{
+    padding: 0;
+}
+
+.fila{
+    height: 40px;
+    margin-top:10px;
+    
+}
+
+.columna{
+    font-weight: bold;
+    font-size: 1.2em;
+    color:white;
+}
+
+.titulo{
+    font-weight:bold;
+    font-size:1.4em;
+  color:white;
+}

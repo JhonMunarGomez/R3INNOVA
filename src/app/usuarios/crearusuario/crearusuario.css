@@ -1,0 +1,13 @@
+.contenido{
+background-color: rgba(30, 149, 31, 0.7);
+    margin-top: 50px;
+    border-radius: 10px 10px 10px 10px;
+-moz-border-radius: 10px 10px 10px 10px;
+-webkit-border-radius: 10px 10px 10px 10px;
+border: 0px solid #000000;
+}
+.titulo{
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-top:30px;
+}

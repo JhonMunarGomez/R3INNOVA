@@ -1,0 +1,27 @@
+.sinpadding{
+    padding: 0;
+}
+
+.contenedor{
+    margin-top: 200px;
+    background-color: rgba(30, 149, 31, 0.7);
+    border-radius: 10px 10px 10px 10px;
+-moz-border-radius: 10px 10px 10px 10px;
+-webkit-border-radius: 10px 10px 10px 10px;
+
+color: white;
+font-size: 1.2em;
+}
+.texto{
+    color:white;
+}
+
+.titulo{
+    font-weight: bold;
+    font-size: 1.6em;
+    margin-top: 10px;
+}
+.fila{
+    margin-bottom: 20px;
+    margin-top:10px;
+}

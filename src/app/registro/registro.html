@@ -1,0 +1,88 @@
+<div class="container-fluid">
+  <div class="row">
+    <form novalidate [formGroup]="form">
+      <div class="offset-lg-1 col-lg-6 contenido">
+        <div class="container sinpadding">
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <label class="titulo ">Datos de Usuario</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class=" col-lg-12">
+              <div class="form-group">
+                <label class="texto" for="identificacion">Identificación</label>
+                <input type="number" class="form-control text-center" id="identificacion" formControlName="identificacion" placeholder="Identificación">
+
+                <div *ngIf="form.controls.identificacion.errors && form.controls.identificacion.touched">
+                  <div *ngIf="form.controls.identificacion.errors.required" class="alert alert-danger">
+                    El campo es requerido
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class=" col-lg-12">
+              <div class="form-group">
+                <label class="texto" for="nombre">Nombre Completo :</label>
+                <input type="input" class="form-control text-center" id="nombre" formControlName="nombre" placeholder="Nombre">
+
+                <div *ngIf="form.controls.nombre.errors && form.controls.nombre.touched">
+                  <div *ngIf="form.controls.nombre.errors.required" class="alert alert-danger">
+                    El campo es requerido
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class=" col-lg-12">
+              <div class="form-group">
+                <label class="texto" for="apellido">Apellido :</label>
+                <input type="input" class="form-control text-center" id="apellido" formControlName="apellido" placeholder="Apellido">
+                <div *ngIf="form.controls.apellido.errors && form.controls.apellido.touched">
+                  <div *ngIf="form.controls.apellido.errors.required" class="alert alert-danger">
+                    El campo es requerido
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class=" col-lg-12">
+              <div class="form-group">
+                <label class="texto" for="correo">Correo :</label>
+                <input type="input" class="form-control text-center" id="correo" formControlName="correo" placeholder="Correo Electronico">
+                <div *ngIf="form.controls.correo.errors && form.controls.correo.touched">
+                  <div *ngIf="form.controls.correo.errors.required" class="alert alert-danger">
+                    El campo es requerido
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class=" col-lg-12">
+              <div class="form-group">
+                <label class="texto" for="telefono">Telefono  :</label>
+                <input type="number" class="form-control text-center" id="telefono" formControlName="telefono" placeholder="Telefono">
+                <div *ngIf="form.controls.telefono.errors && form.controls.telefono.touched">
+                  <div *ngIf="form.controls.telefono.errors.required" class="alert alert-danger">
+                    El campo es requerido
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="offset-lg-5 col-lg-4" style="margin-bottom: 10px">
+              <button class="btn btn-primary" (click)="addUsuario()" [disabled]="!form.valid"> Registrar </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
